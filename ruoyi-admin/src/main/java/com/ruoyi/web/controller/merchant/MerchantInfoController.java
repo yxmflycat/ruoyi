@@ -91,6 +91,16 @@ public class MerchantInfoController extends BaseController {
     }
 
     /**
+     * 查看商户信息
+     */
+    @GetMapping("/detail/{id}")
+    public String detail(@PathVariable("id") Long id, ModelMap mmap) {
+        MerchantInfo merchantInfo = merchantInfoService.selectMerchantInfoById(id);
+        mmap.put("merchantInfo", merchantInfo);
+        return prefix + "/detail";
+    }
+
+    /**
      * 修改保存商户信息
      */
     @RequiresPermissions("system:merchant:edit")
