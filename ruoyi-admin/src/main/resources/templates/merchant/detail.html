@@ -5,121 +5,121 @@
 </head>
 <body class="white-bg">
     <div class="wrapper wrapper-content animated fadeInRight ibox-content">
-        <form class="form-horizontal m" id="form-merchant-edit" th:object="${merchantInfo}">
+        <form class="form-horizontal m" id="form-merchant-edit">
             <div class="form-group">    
                 <label class="col-sm-3 control-label">公司名称：</label>
                 <div class="col-sm-8">
-                    <div class="form-control-static" th:text="${companyName}"></div>
+                    <div class="form-control-static" th:text="${merchantInfo.companyName}"></div>
                 </div>
             </div>
             <div class="form-group">    
                 <label class="col-sm-3 control-label is-required">注册地址：</label>
                 <div class="col-sm-8">
-                    <div class="form-control-static" th:text="${registerAddr}"></div>
+                    <div class="form-control-static" th:text="${merchantInfo.registerAddr}"></div>
                 </div>
             </div>
             <div class="form-group">    
                 <label class="col-sm-3 control-label is-required">经营地址：</label>
                 <div class="col-sm-8">
-                 <div class="form-control-static" th:text="${activeAddr}"></div>
+                 <div class="form-control-static" th:text="${merchantInfo.activeAddr}"></div>
                 </div>
             </div>
             <div class="form-group">    
                 <label class="col-sm-3 control-label">场所类型：</label>
                 <div class="col-sm-8">
-                    <div class="form-control-static" th:text="${@dict.getLabel('place_type', placeType)}"></div>
+                    <div class="form-control-static" th:text="${@dict.getLabel('place_type', merchantInfo.placeType)}"></div>
                 </div>
             </div>
 
             <div class="form-group">    
                 <label class="col-sm-3 control-label">是否连锁：</label>
                 <div class="col-sm-8">
-                    <div class="form-control-static" th:text="${@dict.getLabel('chain', chain)}"></div>
+                    <div class="form-control-static" th:text="${@dict.getLabel('chain', merchantInfo.chain)}"></div>
                 </div>
             </div>
             <div class="form-group">    
                 <label class="col-sm-3 control-label is-required">公司法人姓名：</label>
                 <div class="col-sm-8">
-                    <div class="form-control-static" th:text="${corporationName}"></div>
+                    <div class="form-control-static" th:text="${merchantInfo.corporationName}"></div>
                 </div>
             </div>
             <div class="form-group">    
                 <label class="col-sm-3 control-label is-required">公司法人电话：</label>
                 <div class="col-sm-8">
-                    <div class="form-control-static" th:text="${corporationTel}"></div>
+                    <div class="form-control-static" th:text="${merchantInfo.corporationTel}"></div>
                 </div>
             </div>
             <div class="form-group">    
                 <label class="col-sm-3 control-label is-required">公司法人证件号：</label>
                 <div class="col-sm-8">
-                    <div class="form-control-static" th:text="${corporationId}"></div>
+                    <div class="form-control-static" th:text="${merchantInfo.corporationId}"></div>
                 </div>
             </div>
             <div class="form-group">    
                 <label class="col-sm-3 control-label is-required">员工数量：</label>
                 <div class="col-sm-8">
-                    <div class="form-control-static" th:text="${staffNum}"></div>
+                    <div class="form-control-static" th:text="${merchantInfo.staffNum}"></div>
                 </div>
             </div>
             <div class="form-group">    
                 <label class="col-sm-3 control-label is-required">教练数量：</label>
                 <div class="col-sm-8">
-                    <div class="form-control-static" th:text="${coachNum}"></div>
+                    <div class="form-control-static" th:text="${merchantInfo.coachNum}"></div>
                 </div>
             </div>
             <div class="form-group">    
                 <label class="col-sm-3 control-label">教练类型：</label>
                 <div class="col-sm-8">
-                        <div class="form-control-static" th:text="${@dict.getLabel('coachType', coachType)}"></div>
+                        <div class="form-control-static" th:text="${@dict.getLabel('coach_type', merchantInfo.coachType)}"></div>
                 </div>
             </div>
             <div class="form-group">    
                 <label class="col-sm-3 control-label is-required">会员数量：</label>
                 <div class="col-sm-8">
-                    <div class="form-control-static" th:text="${memberNum}"></div>
+                    <div class="form-control-static" th:text="${merchantInfo.memberNum}"></div>
                 </div>
             </div>
             <div class="form-group">    
                 <label class="col-sm-3 control-label is-required">会员年限：</label>
                 <div class="col-sm-8">
-                    <div class="form-control-static" th:text="${memberYears}"></div>
+                    <div class="form-control-static" th:text="${merchantInfo.memberYears}"></div>
                 </div>
             </div>
             <div class="form-group">    
                 <label class="col-sm-3 control-label is-required">申请姓名：</label>
                 <div class="col-sm-8">
-                    <div class="form-control-static" th:text="${applicantName}"></div>
+                    <div class="form-control-static" th:text="${merchantInfo.applicantName}"></div>
                 </div>
             </div>
             <div class="form-group">    
                 <label class="col-sm-3 control-label is-required">营业执照照片地址：</label>
                 <div class="col-sm-8">
-                    <div class="form-control-static" th:text="${companyCredentialsUrl}"></div>
+                    <div class="form-control-static" th:text="${merchantInfo.companyCredentialsUrl}"></div>
                 </div>
             </div>
             <div class="form-group">    
                 <label class="col-sm-3 control-label is-required">门头照片：</label>
                 <div class="col-sm-8">
-                    <div class="form-control-static" th:text="${companyDoorwayUrl}"></div>
+                    <div class="form-control-static" th:text="${merchantInfo.companyDoorwayUrl}"></div>
 
                 </div>
             </div>
             <div class="form-group">    
                 <label class="col-sm-3 control-label is-required">室内照片：</label>
                 <div class="col-sm-8">
-                    <div class="form-control-static" th:text="${gymPicUrl}"></div>
+                    <div class="form-control-static" th:text="${merchantInfo.gymPicUrl}"></div>
                 </div>
             </div>
             <div class="form-group">    
                 <label class="col-sm-3 control-label is-required">证件照正面：</label>
                 <div class="col-sm-8">
-                    <div class="form-control-static" th:text="${corporationIdObverseUrl}"></div>
+                    <div class="form-control-static" th:text="${merchantInfo.corporationIdObverseUrl}"></div>
                 </div>
             </div>
             <div class="form-group">    
                 <label class="col-sm-3 control-label is-required">证件照反面：</label>
                 <div class="col-sm-8">
-                    <div class="form-control-static" th:text="${corporationIdReverseUrl}"></div>
+                    <div class="form-control-static" th:text="${merchantInfo.corporationIdReverseUrl}"></div>
                 </div>
             </div>
         </form>
