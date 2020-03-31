@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.merchant.mapper.MerchantInfoMapper">
+    
+    <resultMap type="com.ruoyi.merchant.domain.MerchantInfo" id="MerchantInfoResult">
+        <result property="id"    column="id"    />
+        <result property="companyName"    column="company_name"    />
+        <result property="registerAddr"    column="register_addr"    />
+        <result property="activeAddr"    column="active_addr"    />
+        <result property="placeType"    column="place_type"    />
+        <result property="chain"    column="chain"    />
+        <result property="communicateChannel"    column="communicate_channel"    />
+        <result property="corporationName"    column="corporation_name"    />
+        <result property="corporationTel"    column="corporation_tel"    />
+        <result property="corporationId"    column="corporation_id"    />
+        <result property="staffNum"    column="staff_num"    />
+        <result property="coachNum"    column="coach_num"    />
+        <result property="coachType"    column="coach_type"    />
+        <result property="memberNum"    column="member_num"    />
+        <result property="memberYears"    column="member_years"    />
+        <result property="memberAppointmentType"    column="member_appointment_type"    />
+        <result property="applyStatus"    column="apply_status"    />
+        <result property="applyTime"    column="apply_time"    />
+        <result property="confirmTime"    column="confirm_time"    />
+        <result property="applySource"    column="apply_source"    />
+        <result property="applicantName"    column="applicant_name"    />
+        <result property="confirmUserId"    column="confirm_user_id"    />
+        <result property="confirmUserName"    column="confirm_user_name"    />
+        <result property="confirmStatus"    column="confirm_status"    />
+        <result property="merchantLevel"    column="merchant_level"    />
+        <result property="confirmDescription"    column="confirm_description"    />
+        <result property="companyCredentialsUrl"    column="company_credentials_url"    />
+        <result property="companyDoorwayUrl"    column="company_doorway_url"    />
+        <result property="gymPicUrl"    column="gym_pic_url"    />
+        <result property="corporationIdObverseUrl"    column="corporation_id_obverse_url"    />
+        <result property="corporationIdReverseUrl"    column="corporation_id_reverse_url"    />
+        <result property="createTime"    column="create_time"    />
+    </resultMap>
+
+    <sql id="selectMerchantInfoVo">
+        select id, company_name, register_addr, active_addr, place_type, chain, communicate_channel, corporation_name, corporation_tel, corporation_id, staff_num, coach_num, coach_type, member_num, member_years, member_appointment_type, apply_status, apply_time, confirm_time, apply_source, applicant_name, confirm_user_id, confirm_user_name, confirm_status, merchant_level, confirm_description, company_credentials_url, company_doorway_url, gym_pic_url, corporation_id_obverse_url, corporation_id_reverse_url, create_time from tb_merchant_info
+    </sql>
+
+    <select id="selectMerchantInfoList" parameterType="com.ruoyi.merchant.domain.MerchantInfo" resultMap="MerchantInfoResult">
+        <include refid="selectMerchantInfoVo"/>
+        <where>  
+            <if test="companyName != null  and companyName != ''"> and company_name like concat('%', #{companyName}, '%')</if>
+        </where>
+    </select>
+    
+    <select id="selectMerchantInfoById" parameterType="Long" resultMap="MerchantInfoResult">
+        <include refid="selectMerchantInfoVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertMerchantInfo" parameterType="com.ruoyi.merchant.domain.MerchantInfo" useGeneratedKeys="true" keyProperty="id">
+        insert into tb_merchant_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="companyName != null  and companyName != ''">company_name,</if>
+            <if test="registerAddr != null  and registerAddr != ''">register_addr,</if>
+            <if test="activeAddr != null  and activeAddr != ''">active_addr,</if>
+            <if test="placeType != null ">place_type,</if>
+            <if test="chain != null ">chain,</if>
+            <if test="communicateChannel != null ">communicate_channel,</if>
+            <if test="corporationName != null  and corporationName != ''">corporation_name,</if>
+            <if test="corporationTel != null  and corporationTel != ''">corporation_tel,</if>
+            <if test="corporationId != null  and corporationId != ''">corporation_id,</if>
+            <if test="staffNum != null ">staff_num,</if>
+            <if test="coachNum != null ">coach_num,</if>
+            <if test="coachType != null ">coach_type,</if>
+            <if test="memberNum != null ">member_num,</if>
+            <if test="memberYears != null ">member_years,</if>
+            <if test="memberAppointmentType != null ">member_appointment_type,</if>
+            <if test="applyStatus != null ">apply_status,</if>
+            <if test="applyTime != null ">apply_time,</if>
+            <if test="confirmTime != null ">confirm_time,</if>
+            <if test="applySource != null ">apply_source,</if>
+            <if test="applicantName != null  and applicantName != ''">applicant_name,</if>
+            <if test="confirmUserId != null  and confirmUserId != ''">confirm_user_id,</if>
+            <if test="confirmUserName != null  and confirmUserName != ''">confirm_user_name,</if>
+            <if test="confirmStatus != null ">confirm_status,</if>
+            <if test="merchantLevel != null ">merchant_level,</if>
+            <if test="confirmDescription != null  and confirmDescription != ''">confirm_description,</if>
+            <if test="companyCredentialsUrl != null  and companyCredentialsUrl != ''">company_credentials_url,</if>
+            <if test="companyDoorwayUrl != null  and companyDoorwayUrl != ''">company_doorway_url,</if>
+            <if test="gymPicUrl != null  and gymPicUrl != ''">gym_pic_url,</if>
+            <if test="corporationIdObverseUrl != null  and corporationIdObverseUrl != ''">corporation_id_obverse_url,</if>
+            <if test="corporationIdReverseUrl != null  and corporationIdReverseUrl != ''">corporation_id_reverse_url,</if>
+            <if test="createTime != null ">create_time,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="companyName != null  and companyName != ''">#{companyName},</if>
+            <if test="registerAddr != null  and registerAddr != ''">#{registerAddr},</if>
+            <if test="activeAddr != null  and activeAddr != ''">#{activeAddr},</if>
+            <if test="placeType != null ">#{placeType},</if>
+            <if test="chain != null ">#{chain},</if>
+            <if test="communicateChannel != null ">#{communicateChannel},</if>
+            <if test="corporationName != null  and corporationName != ''">#{corporationName},</if>
+            <if test="corporationTel != null  and corporationTel != ''">#{corporationTel},</if>
+            <if test="corporationId != null  and corporationId != ''">#{corporationId},</if>
+            <if test="staffNum != null ">#{staffNum},</if>
+            <if test="coachNum != null ">#{coachNum},</if>
+            <if test="coachType != null ">#{coachType},</if>
+            <if test="memberNum != null ">#{memberNum},</if>
+            <if test="memberYears != null ">#{memberYears},</if>
+            <if test="memberAppointmentType != null ">#{memberAppointmentType},</if>
+            <if test="applyStatus != null ">#{applyStatus},</if>
+            <if test="applyTime != null ">#{applyTime},</if>
+            <if test="confirmTime != null ">#{confirmTime},</if>
+            <if test="applySource != null ">#{applySource},</if>
+            <if test="applicantName != null  and applicantName != ''">#{applicantName},</if>
+            <if test="confirmUserId != null  and confirmUserId != ''">#{confirmUserId},</if>
+            <if test="confirmUserName != null  and confirmUserName != ''">#{confirmUserName},</if>
+            <if test="confirmStatus != null ">#{confirmStatus},</if>
+            <if test="merchantLevel != null ">#{merchantLevel},</if>
+            <if test="confirmDescription != null  and confirmDescription != ''">#{confirmDescription},</if>
+            <if test="companyCredentialsUrl != null  and companyCredentialsUrl != ''">#{companyCredentialsUrl},</if>
+            <if test="companyDoorwayUrl != null  and companyDoorwayUrl != ''">#{companyDoorwayUrl},</if>
+            <if test="gymPicUrl != null  and gymPicUrl != ''">#{gymPicUrl},</if>
+            <if test="corporationIdObverseUrl != null  and corporationIdObverseUrl != ''">#{corporationIdObverseUrl},</if>
+            <if test="corporationIdReverseUrl != null  and corporationIdReverseUrl != ''">#{corporationIdReverseUrl},</if>
+            <if test="createTime != null ">#{createTime},</if>
+         </trim>
+    </insert>
+
+    <update id="updateMerchantInfo" parameterType="com.ruoyi.merchant.domain.MerchantInfo">
+        update tb_merchant_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="companyName != null  and companyName != ''">company_name = #{companyName},</if>
+            <if test="registerAddr != null  and registerAddr != ''">register_addr = #{registerAddr},</if>
+            <if test="activeAddr != null  and activeAddr != ''">active_addr = #{activeAddr},</if>
+            <if test="placeType != null ">place_type = #{placeType},</if>
+            <if test="chain != null ">chain = #{chain},</if>
+            <if test="communicateChannel != null ">communicate_channel = #{communicateChannel},</if>
+            <if test="corporationName != null  and corporationName != ''">corporation_name = #{corporationName},</if>
+            <if test="corporationTel != null  and corporationTel != ''">corporation_tel = #{corporationTel},</if>
+            <if test="corporationId != null  and corporationId != ''">corporation_id = #{corporationId},</if>
+            <if test="staffNum != null ">staff_num = #{staffNum},</if>
+            <if test="coachNum != null ">coach_num = #{coachNum},</if>
+            <if test="coachType != null ">coach_type = #{coachType},</if>
+            <if test="memberNum != null ">member_num = #{memberNum},</if>
+            <if test="memberYears != null ">member_years = #{memberYears},</if>
+            <if test="memberAppointmentType != null ">member_appointment_type = #{memberAppointmentType},</if>
+            <if test="applyStatus != null ">apply_status = #{applyStatus},</if>
+            <if test="applyTime != null ">apply_time = #{applyTime},</if>
+            <if test="confirmTime != null ">confirm_time = #{confirmTime},</if>
+            <if test="applySource != null ">apply_source = #{applySource},</if>
+            <if test="applicantName != null  and applicantName != ''">applicant_name = #{applicantName},</if>
+            <if test="confirmUserId != null  and confirmUserId != ''">confirm_user_id = #{confirmUserId},</if>
+            <if test="confirmUserName != null  and confirmUserName != ''">confirm_user_name = #{confirmUserName},</if>
+            <if test="confirmStatus != null ">confirm_status = #{confirmStatus},</if>
+            <if test="merchantLevel != null ">merchant_level = #{merchantLevel},</if>
+            <if test="confirmDescription != null  and confirmDescription != ''">confirm_description = #{confirmDescription},</if>
+            <if test="companyCredentialsUrl != null  and companyCredentialsUrl != ''">company_credentials_url = #{companyCredentialsUrl},</if>
+            <if test="companyDoorwayUrl != null  and companyDoorwayUrl != ''">company_doorway_url = #{companyDoorwayUrl},</if>
+            <if test="gymPicUrl != null  and gymPicUrl != ''">gym_pic_url = #{gymPicUrl},</if>
+            <if test="corporationIdObverseUrl != null  and corporationIdObverseUrl != ''">corporation_id_obverse_url = #{corporationIdObverseUrl},</if>
+            <if test="corporationIdReverseUrl != null  and corporationIdReverseUrl != ''">corporation_id_reverse_url = #{corporationIdReverseUrl},</if>
+            <if test="createTime != null ">create_time = #{createTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteMerchantInfoById" parameterType="Long">
+        delete from tb_merchant_info where id = #{id}
+    </delete>
+
+    <delete id="deleteMerchantInfoByIds" parameterType="String">
+        delete from tb_merchant_info where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+    
+</mapper>
